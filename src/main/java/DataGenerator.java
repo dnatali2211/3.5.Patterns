@@ -1,11 +1,14 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import com.github.javafaker.Faker;
 
 public class DataGenerator {
-    Faker faker = new Faker(new Locale("ru"));
+    static Faker faker = new Faker(new Locale("ru"));
+
     public String generateDate(int daysToAdd) {
         LocalDate currentDate = LocalDate.now();
         LocalDate deliveryDate = currentDate.plusDays(daysToAdd);
@@ -13,31 +16,20 @@ public class DataGenerator {
         String deliveryDateStr = deliveryDate.format(formatter);
         return deliveryDateStr;
     }
+
     public String generateName() {
         return faker.name().name();
     }
+
     public String generatePhoneNumber() {
         return faker.numerify("+###########");
     }
 
-    public String generateCity() {
-        return faker.address().city();
-    }
-    public static class Registration {
-        private Registration() {
-        }
+    public static final List<String> cities = Arrays.asList(
+            "Санкт-Петербург", "Омск", "Ульяновск", "Псков", "Йошкар-Ола", "Великий Новгород"
+    );
 
-        public static UserInfo generateUser(String locale) {
-            // TODO: добавить логику для создания пользователя user с использованием методов generateCity(locale),
-            // generateName(locale), generatePhone(locale)
-            return user;
-        }
-    }
-
-    @Value
-    public static class UserInfo {
-        String city;
-        String name;
-        String phone;
+    public static String generateCity() {
+        return cities.get(faker.random().nextInt(cities.size()));
     }
 }
