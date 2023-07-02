@@ -15,7 +15,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
 
         $("[data-test-id=city] input").setValue(dataGenerator.generateCity());
-        $("[data-test-id=date] input").doubleClick().sendKeys(dataGenerator.generateDate(4));
+        $("[data-test-id=date] input").doubleClick().sendKeys(dataGenerator.generateDate(4, "dd.MM.yyyy"));
         $("[data-test-id=name] input").setValue(dataGenerator.generateName());
         $("[data-test-id=phone] input").setValue(dataGenerator.generatePhoneNumber());
         $(withText("Успешно")).shouldBe(Condition.hidden);
@@ -23,8 +23,8 @@ public class CardDeliveryTest {
         $(".button").click();
         $("[data-test-id=success-notification]").shouldBe(Condition.visible, Duration.ofSeconds(40));
         $("[data-test-id=success-notification]").shouldHave(Condition.text("Успешно!\n" +
-                "Встреча успешно запланирована на " + dataGenerator.generateDate(4))).shouldBe(Condition.visible);
-        $("[data-test-id=date] input").doubleClick().sendKeys(dataGenerator.generateDate(7));
+                "Встреча успешно запланирована на " + dataGenerator.generateDate(4, "dd.MM.yyyy"))).shouldBe(Condition.visible);
+        $("[data-test-id=date] input").doubleClick().sendKeys(dataGenerator.generateDate(7, "dd.MM.yyyy"));
         $(".button").click();
         $("[data-test-id=replan-notification]").shouldBe(Condition.visible, Duration.ofSeconds(40));
         $("[data-test-id=replan-notification]").shouldHave(Condition.text(
@@ -32,6 +32,6 @@ public class CardDeliveryTest {
         $("[data-test-id=replan-notification] button").click();
         $("[data-test-id=success-notification]").shouldBe(Condition.visible, Duration.ofSeconds(40));
         $("[data-test-id=success-notification]").shouldHave(Condition.text("Успешно!\n" +
-                "Встреча успешно запланирована на " + dataGenerator.generateDate(7))).shouldBe(Condition.visible);
+                "Встреча успешно запланирована на " + dataGenerator.generateDate(7, "dd.MM.yyyy"))).shouldBe(Condition.visible);
     }
 }
