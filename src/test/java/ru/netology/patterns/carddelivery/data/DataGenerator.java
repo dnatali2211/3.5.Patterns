@@ -1,4 +1,4 @@
-package ru.netology.patterns.cardDelivery.data;
+package ru.netology.patterns.carddelivery.data;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

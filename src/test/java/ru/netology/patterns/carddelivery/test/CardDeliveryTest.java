@@ -1,8 +1,8 @@
-package ru.netology.patterns.cardDelivery.test;
+package ru.netology.patterns.carddelivery.test;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
-import ru.netology.patterns.cardDelivery.data.DataGenerator;
+import ru.netology.patterns.carddelivery.data.DataGenerator;
 
 import java.time.Duration;
 
