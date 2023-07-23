@@ -1,5 +1,14 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+allure {
+    autoconfigure = true
+    version = '2.23.0'
+    useJUnit5 {
+        version = '2.23.0'
+    }
 }
 
 group 'ru.netology'
@@ -19,6 +28,7 @@ dependencies {
     testImplementation 'com.codeborne:selenide:6.13.0'
     testImplementation 'com.github.javafaker:javafaker:1.0.1'
     testImplementation 'com.github.javafaker:javafaker:1.0.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.13.3'
 }
 
 test {
